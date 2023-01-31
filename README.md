@@ -1,3 +1,11 @@
+# Apk打包流程
+
+![img](doc/README/20200318154633977.png)
+
+![img](doc/README/20200318195612100.png)
+
+
+
 # 手动打包apk
 
 > 打包环境Windows电脑，不过命令应该都是一致的,需要提前把\SDK\build-tools\33.0.1添加到环境变量，或者下面的命名直接使用全路径
@@ -94,6 +102,11 @@ aapt2 compile --dir project_root/module_root/src/main/res/ -o compiled/
 aapt2 compile --dir project_root/module_root/src/main/res/ -o compiled/res.zip
 ```
 
+| 参数    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| --dir   | 指定要在其中搜索资源的目录。虽然您可以使用此标记通过一个命令编译多个资源文件，但这样就无法获得增量编译的优势。因此，此标记不应被用于大型项目。 |
+| -o path | 指定已编译资源的输出路径。也可以直接指定一个压缩文件         |
+
 ## aapt2链接
 
 使用`link`语法如下，**多个文件使用空格隔开**
@@ -153,3 +166,12 @@ javac -cp android.jar -d compiled/ "@allJavaFile.txt"
 
 **allJavaFile.txt里面的内容一行一个**
 
+
+
+# 参考文档
+
+> https://juejin.cn/post/7166047548551987213#heading-6
+>
+> https://www.jianshu.com/p/8d3dac0e5d89
+>
+> https://blog.csdn.net/aha_jasper/article/details/104944929
