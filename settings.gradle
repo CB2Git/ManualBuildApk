@@ -1,0 +1,63 @@
+import java.util.function.Consumer
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "ManualBuildApk"
+include ':app'
+
+
+//gradle.projectsEvaluated(new Action<Project>() {
+//    @Override
+//    void execute(Project project) {
+//        c
+//        project.getTasks().
+//        def task = project.getTasks().findByName("processDebugResources")
+//        println("*********" + task)
+//        if (task instanceof Task) {
+//            println("create")
+//            def t = project.getTasks().create("2333", new Action<Task>() {
+//                @Override
+//                void execute(Task task1) {
+//                    println("23456")
+//                }
+//            })
+//            task.dependsOn(t)
+//        }
+//    }
+//})
+
+gradle.projectsEvaluated(new Action<Gradle>() {
+    @Override
+    void execute(Gradle gradle) {
+        gradle.allprojects(new Action<Project>() {
+            @Override
+            void execute(Project project) {
+
+            }
+        })
+    }
+})
+
+gradle.taskGraph.whenReady(new Action<TaskExecutionGraph>() {
+    @Override
+    void execute(TaskExecutionGraph taskExecutionGraph) {
+        taskExecutionGraph.allTasks.forEach(new Consumer<Task>() {
+            @Override
+            void accept(Task task) {
+//                println(">>>>> " + task.getProject().getName() + "/" + task.getName() + " / " + task.class)
+            }
+        })
+    }
+})
